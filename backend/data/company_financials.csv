@@ -1,0 +1,5 @@
+entity,period_end,period_type,total_assets,total_deposits,current_account,savings_account,gross_advances,net_advances,interest_income,interest_expense,non_interest_income,operating_expenses,provisions,gross_npa_amount,net_npa_amount,shareholders_equity,number_of_shares,net_profit,eps,dps,capital_adequacy_ratio
+IndusInd Bank,2020-03-31,Q,320000,250000,20000,60000,180000,175000,15000,6000,2000,4200,300,5400,1200,35000,300000000,2200,7.33,2.5,14.2
+IndusInd Bank,2020-06-30,Q,330000,260000,21000,62000,185000,180000,15200,6100,2100,4300,320,5000,1100,36000,300000000,2300,7.67,2.5,14.5
+IndusInd Bank,2020-09-30,Q,340000,270000,22000,64000,190000,185000,15800,6200,2200,4400,350,4900,1000,36500,300000000,2400,8.0,2.5,14.7
+IndusInd Bank,2020-12-31,Q,350000,275000,21500,65000,192000,188000,16000,6300,2300,4500,280,4500,900,37000,300000000,2500,8.33,2.5,14.9
