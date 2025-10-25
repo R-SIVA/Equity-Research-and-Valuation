@@ -120,7 +120,7 @@
 
 import pandas as pd, io
 from pathlib import Path
-from fastapi import UploadFile
+from fastapi import UploadFile, HTTPException
 
 DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 SINGLE_FILE = DATA_DIR / "company_financials.csv"
@@ -139,12 +139,15 @@ REQUIRED_COLUMNS_PEER = ["entity","pb_ratio","roe","gnpa_percent","car","market_
 async def process_upload_single(file: UploadFile):
     content = await file.read()
     ext = Path(file.filename).suffix.lower()
-    if ext in [".xls",".xlsx"]:
-        df = pd.read_excel(io.BytesIO(content))
-    elif ext == ".csv":
-        df = pd.read_csv(io.BytesIO(content))
-    else:
-        raise ValueError("Unsupported file type")
+    if ext not in [".xls", ".xlsx", ".csv"]:
+        raise HTTPException(status_code=400, detail="Unsupported file type. Use .xlsx, .xls, or .csv")
+    try:
+        if ext in [".xls", ".xlsx"]:
+            df = pd.read_excel(io.BytesIO(content))
+        elif ext == ".csv":
+            df = pd.read_csv(io.BytesIO(content))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Error processing file: {e}")
     df.columns = [c.strip() for c in df.columns]
     missing = [c for c in REQUIRED_COLUMNS_COMPANY if c not in df.columns]
     if missing:
