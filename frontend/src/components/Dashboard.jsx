@@ -6,7 +6,8 @@ import ValuationPanel from "./ValuationPanel";
 import PeerTable from "./PeerTable";
 import PeerTrendChart from "./PeerTrendChart";
 import PeerRanking from "./PeerRanking";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
+import DownloadButton from "./DownloadButton";
 
 export default function Dashboard() {
   const [ratios, setRatios] = useState([]);
@@ -52,6 +53,8 @@ export default function Dashboard() {
   const latest = ratios.length > 0 ? ratios[ratios.length - 1] : {};
 
   return (
+    <div>
+      <DownloadButton/>
     <div
       style={{
         padding: 32,
@@ -60,6 +63,8 @@ export default function Dashboard() {
         boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
         
       }}
+
+      id="dashboard-container"
     >
       <button
               onClick={uploadpage}
@@ -244,6 +249,7 @@ export default function Dashboard() {
         <PeerRanking metric="gnpa_percent" higherIsBetter={false} />
         <PeerRanking metric="car" higherIsBetter={true} />
       </div>
+    </div>
     </div>
   );
 }
