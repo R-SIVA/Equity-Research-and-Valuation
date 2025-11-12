@@ -1,33 +1,3 @@
-// import React from "react";
-// import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-
-// export default function TrendChart({data, metric, title, forecast=[]}){
-//   const formatted = (data || []).map(r=>({period: r.period_end?.split("T")[0] || r.period_end, value: r[metric]}));
-//   // append forecast if provided: forecast is array of {period_end,yhat,yhat_lower,yhat_upper}
-//   const fcFmt = (forecast || []).map(f=>({period: f.period_end, yhat: f.yhat, yhat_lower: f.yhat_lower, yhat_upper: f.yhat_upper}));
-//   // merge last historical date to align x-axis
-//   const combined = [...formatted];
-//   fcFmt.forEach(f => combined.push({period: f.period, value: f.yhat, yhat_lower: f.yhat_lower, yhat_upper: f.yhat_upper}));
-
-//   return (
-//     <div style={{padding:20, borderRadius:8, background:"#fffeeaff", boxShadow:"0 4px 8px rgba(0,0,0,0.1)"}}>
-//       <h3 style={{color:"#333", marginBottom:16}}>{title}</h3>
-//       <div style={{height:220}}>
-//         <ResponsiveContainer width="100%" height="100%">
-//           <LineChart data={combined}>
-//             <XAxis dataKey="period" tick={{fontSize:11}} />
-//             <YAxis />
-//             <Tooltip />
-//             <CartesianGrid stroke="#f0f0f0" />
-//             <Line type="monotone" dataKey="value" stroke="#1976d2" dot={false} />
-//             <Line type="monotone" dataKey="yhat" stroke="#ff7f0e" dot={false} />
-//           </LineChart>
-//         </ResponsiveContainer>
-//       </div>
-//     </div>
-//   )
-// }
-
 import React from "react";
 import {
   LineChart,

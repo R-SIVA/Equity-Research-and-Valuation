@@ -1,21 +1,3 @@
-// import React from "react";
-
-// export default function KpiCard({title, value}){
-//   let color="#111";
-//   if(title==="GNPA" && value !== undefined && value > 5) color="red";
-//   if(title==="CAR" && value !== undefined && value < 12.5) color="red";
-//   if(title==="CASA" && value !== undefined && value > 40) color="green";
-
-//   return (
-//     <div style={{padding:20, borderRadius:8, background:"#f8c5ffff", boxShadow:"0 4px 8px rgba(0,0,0,0.1)", textAlign:"center"}}>
-//       <div style={{fontSize:14, color:"#666", marginBottom:8}}>{title}</div>
-//       <div style={{fontSize:20, fontWeight:700, color}}>{value !== undefined && value !== null ? (Number(value).toFixed(2) + "%") : "N/A"}</div>
-//     </div>
-//   )
-// }
-
-
-
 import React from "react";
 import { motion } from "framer-motion";
 
