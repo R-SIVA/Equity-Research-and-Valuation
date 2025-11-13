@@ -11,5 +11,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# optional root
+@app.get("/")
+def root():
+    return {"message": "API is running"}
 app.include_router(api_router, prefix="/api")

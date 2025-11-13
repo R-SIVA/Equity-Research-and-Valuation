@@ -206,9 +206,6 @@ export default function UploadPanel() {
       >
         {msg}
       </div>
-      <div>
-        format
-      </div>
     </div>
     
     </div>

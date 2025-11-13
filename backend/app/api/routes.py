@@ -14,6 +14,7 @@ from app.services.models import train_all_models_for_entity, forecast_metric
 from app.services.valuation import compute_pb_target, compute_ddm_value
 import traceback
 import logging
+from app.api.routes_report import router as report_router
 
 # Initialize logger
 logger = logging.getLogger("api_routes")
@@ -88,3 +89,7 @@ def get_peer_trend(metric: str):
 def get_peer_rank(metric: str, higher_is_better: bool = True):
     return rank_peers(metric, higher_is_better)
 
+router.include_router(report_router)
+
+from app.api.test_pdf import router as test_pdf_router
+router.include_router(test_pdf_router)

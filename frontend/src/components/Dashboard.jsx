@@ -50,6 +50,26 @@ export default function Dashboard() {
     }
   };
 
+const downloadAnalyticalReport = async () => {
+  try {
+    const res = await fetch("http://127.0.0.1:8000/api/report/download", {
+      method: "GET",
+    });
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Equity_Research_Report.pdf";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (err) {
+    console.error("Download failed:", err);
+  }
+};
+
+
   const latest = ratios.length > 0 ? ratios[ratios.length - 1] : {};
 
   return (
@@ -86,6 +106,23 @@ export default function Dashboard() {
             >
               Upload Financial Data
             </button>
+            <button
+  onClick={downloadAnalyticalReport}
+  style={{
+    padding: "10px 16px",
+    background: "linear-gradient(90deg, #1f4037, #99f2c8)",
+    color: "#fff",
+    border: "none",
+    borderRadius: 8,
+    fontWeight: 600,
+    cursor: "pointer",
+    boxShadow: "0 3px 6px rgba(0,0,0,0.2)",
+    marginBottom: 20,
+  }}
+>
+  📄 Download Analytical Report (PDF)
+</button>
+
       <h2
         style={{
           color: "#2c3e50",
